@@ -5,7 +5,8 @@ import * as Constants from './constants.js';
 import axios from 'axios';
 import graphql from 'graphql';
 import Employee from './components/Employee.js';
-
+import { HashRouter as Router, Route } from 'react-router-dom'
+import Login from './components/Login.js';
 function App() {
 
   const [data, setData] = useState( { employees: [] } );
@@ -24,22 +25,29 @@ function App() {
 
     fetchData();
 
-  })
+  }, []);
 
   return (
     <div className="App">
       <header className="App-header">
+        <Router>
+          <div>
+            <Route exact path="/login" component={ Login } />
 
-        <ul>
-          {data.employees.map(item => (
+          </div>
+        </Router>
 
-            <li key={item.id}>
-              <Employee item={item}/>
-            </li>
-
-          ))}
-        </ul>
-
+      {
+        //   <ul>
+        //   {data.employees.map(item => (
+        //
+        //     <li key={item.id}>
+        //       <Employee item={item}/>
+        //     </li>
+        //
+        //   ))}
+        // </ul>
+      }
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
