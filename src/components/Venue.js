@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+
+
 const Venue = (props) => {
 
   useEffect(() => {
@@ -14,6 +16,7 @@ const Venue = (props) => {
 
   return (
     <div>
+        <br/>
         <a href={props.item.url}>{props.item.name}</a>
     </div>
   );
