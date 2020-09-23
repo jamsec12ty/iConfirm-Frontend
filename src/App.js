@@ -70,7 +70,7 @@ function App() {
           </nav>
           <div>
             <Route exact path="/login" render={ (props) => <Login {...props} onLogin={performLogin} /> }/>
-            <Route exact path="/user" component={ User } />
+            <Route exact path="/employee" component={ Employee } />
             <Route exact path="/venue" component={ Venue } />
           </div>
         </Router>

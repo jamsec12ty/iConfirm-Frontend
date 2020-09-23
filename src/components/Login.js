@@ -28,7 +28,7 @@ function handleSubmit(event) {
 }).then((result) => {
   console.log(result.data)
   props.onLogin(result.data.token, result.data.employee)
-  props.history.push("/")
+  props.history.push("/employee")
 })
 .catch((err) => {
   console.warn("error:", err.response.data.message);
