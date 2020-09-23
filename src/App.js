@@ -77,6 +77,7 @@ function App() {
           <div>
             <Route exact path="/login" render={ (props) => <Login {...props} onLogin={performLogin} /> }/>
             <Route exact path="/user" component={ User } />
+            <Route exact path="/venue/new" component={ NewVenue } />
             <Route exact path="/venue" component={ (props) => <VenueScreen {...props} data={data} loading={loading} /> } />
           </div>
         </Router>

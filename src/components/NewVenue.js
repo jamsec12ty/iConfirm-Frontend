@@ -14,16 +14,44 @@ const [formData,setFormData] = useState({
 
 
 const ADD_VENUE = gql`
-  mutation AddTodo($type: String!) {
-    addTodo(type: $type) {
+  mutation AddVenue(
+    $logo: String,
+    $name: String,
+    $address: String,
+    $phone: String,
+    $email: String,
+    $licenseeName: String,
+    $liquorLicNo: String,
+    $liquorLicStatus: Boolean,
+    $masterLicNo: String,
+    $masterLicExp: String,
+    $masterLicStatus: Boolean,
+    $membershipDate: String
+  ) {
+    createVenue(
 
-      logo,
-      name,
-      address,
-      phone,
-      email,
-      licenseeName,
-      liquorLicNo,
+      logo: $logo,
+      name: $name,
+      address: $address,
+      phone: $phone,
+      email: $email,
+      licenseeName: $licenseeName,
+      liquorLicNo: $liquorLicNo,
+      liquorLicStatus: $liquorLicStatus,
+      masterLicNo: $masterLicNo,
+      masterLicNo: $masterLicExp,
+      masterLicStatus: $masterLicStatus,
+      membershipDate: $membershipDate
+
+    ) {
+
+      logo
+      name
+      address
+      phone
+      email
+      licenseeName
+      liquorLicNo
 
     }
   }
