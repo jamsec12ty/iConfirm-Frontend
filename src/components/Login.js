@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Login = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const [errorMsg, setErrorMsg] = useState('');
 ///////////////////////////////////////////////////////////////
 // function handleChange(event) {
 //   console.log("AAAAAAAAAA", event.target.value);
@@ -24,25 +24,15 @@ function handleSubmit(event) {
   axios.post('http://localhost:1337/login', {
     email: email,
     password: password
-  // axios({
-  // url: 'http://localhost:1337/graphql/login',
-  // method: 'post',
-  // data: {
-  //   query:`
-  //     query {
-  //       employees(email: email){
-  //         email
-  //         password
-  //     }
-  //   }`
-  // }
+
 }).then((result) => {
   console.log(result.data)
   props.onLogin(result.data.token, result.data.employee)
-  props.history.push("/")
+  props.history.push("/employee")
 })
 .catch((err) => {
-  console.warn("error:", err);
+  console.warn("error:", err.response.data.message);
+  setErrorMsg(`${err.response.data.message} - Invalid email or password.`);
 })
 }
 
@@ -72,6 +62,9 @@ return (
         Login
       </button>
     </form>
+    <p>
+      {errorMsg}
+    </p>
   </div>
 );
 }
