@@ -10,11 +10,16 @@ const [formData,setFormData] = useState({
   email:"",
   licenseeName:"",
   liquorLicNo:"",
+  liquorLicStatus: "",
+  masterLicNo: "",
+  masterLicExp: "",
+  masterLicStatus: "",
+  membershipDate: ""
 });
 
 
 const ADD_VENUE = gql`
-  mutation AddVenue(
+  mutation addVenue(
     $logo: String,
     $name: String,
     $address: String,
@@ -29,7 +34,6 @@ const ADD_VENUE = gql`
     $membershipDate: String
   ) {
     createVenue(
-
       logo: $logo,
       name: $name,
       address: $address,
@@ -42,9 +46,7 @@ const ADD_VENUE = gql`
       masterLicNo: $masterLicExp,
       masterLicStatus: $masterLicStatus,
       membershipDate: $membershipDate
-
     ) {
-
       logo
       name
       address
@@ -52,10 +54,53 @@ const ADD_VENUE = gql`
       email
       licenseeName
       liquorLicNo
-
     }
   }
 `;
+
+// const ADD_VENUE = gql`
+//   mutation AddVenue(
+//     $logo: String,
+//     $name: String,
+//     $address: String,
+//     $phone: String,
+//     $email: String,
+//     $licenseeName: String,
+//     $liquorLicNo: String,
+//     $liquorLicStatus: Boolean,
+//     $masterLicNo: String,
+//     $masterLicExp: String,
+//     $masterLicStatus: Boolean,
+//     $membershipDate: String
+//   ) {
+//     createVenue(
+//
+//       logo: $logo,
+//       name: $name,
+//       address: $address,
+//       phone: $phone,
+//       email: $email,
+//       licenseeName: $licenseeName,
+//       liquorLicNo: $liquorLicNo,
+//       liquorLicStatus: $liquorLicStatus,
+//       masterLicNo: $masterLicNo,
+//       masterLicNo: $masterLicExp,
+//       masterLicStatus: $masterLicStatus,
+//       membershipDate: $membershipDate
+//
+//     ) {
+//
+//       logo
+//       name
+//       address
+//       phone
+//       email
+//       licenseeName
+//       liquorLicNo
+//
+//     }
+//   }
+// `;
 
 const [addVenue, { data }] = useMutation(ADD_VENUE);
 
