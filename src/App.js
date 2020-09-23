@@ -4,12 +4,14 @@ import './stylesheet/styles.css';
 import * as Constants from './constants.js';
 import axios from 'axios';
 import Employee from './components/Employee.js';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import Login from './components/Login.js';
 import User from './components/User.js';
 import Venue from './components/Venue.js';
 import {GET_VENUES_QUERY} from './constants';
 import { useQuery, gql } from '@apollo/client';
+import NewVenue from './components/NewVenue.js';
+import VenueScreen from './screens/VenueScreen.js';
 
 
 
@@ -20,7 +22,6 @@ function App() {
   // const [data, setData] = useState( { employees: [] } );
   console.log(error, loading, data );
   const [currentUser, setCurrentUser] = useState( {} );
-
 
   useEffect( () => {
     // const fetchData = async () => {
@@ -36,14 +37,15 @@ function App() {
     //
     // fetchData();
 
-   const token = localStorage.getItem('token')
-   const user = localStorage.getItem('employee')
-   console.log(token);
+   const token = localStorage.getItem("token")
+   const user = localStorage.getItem("user")
+   console.log(token)
 
    if( token !== null && user !== null) {
      setCurrentUser(JSON.parse(user) );
      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
    }
+
   }, []); /*{empty array here means run only when component mounts.}*/
 
   const performLogin = (token, user) => {
@@ -54,12 +56,12 @@ function App() {
     setCurrentUser(user);
   };
 
-  const performLogout = () => {
+  const performLogout = (token, user) => {
     delete axios.defaults.headers.common.Authorization
       localStorage.removeItem("token");
       localStorage.removeItem("user");
+      console.log(user);
       setCurrentUser('');
-      console.log("Successfully logged out.");
   };
 
   return (
@@ -67,33 +69,17 @@ function App() {
 
     <div className="App">
       <header className="App-header">
+        <nav>
+          <a href="#" onClick={performLogout}>Logout</a>
+
+        </nav>
         <Router>
-          <nav>
-            {currentUser.name ?
-              (<a href="#/login" onClick={performLogout}> Logout </a>)
-              :
-              (<Link to="/login"> Login </Link>)
-            }
-          </nav>
           <div>
             <Route exact path="/login" render={ (props) => <Login {...props} onLogin={performLogin} /> }/>
-            <Route exact path="/employee" component={ Employee } />
-            <Route exact path="/venue" component={ Venue } />
+            <Route exact path="/user" component={ User } />
+            <Route exact path="/venue" component={ (props) => <VenueScreen {...props} data={data} loading={loading} /> } />
           </div>
         </Router>
-
-
-         <div>
-           {loading?<h1>Loading</h1>:data.venues.map(item => (
-
-             <div key={item.name}>
-               <Venue item={item}/>
-             </div>
-
-           ))}
-         </div>
-
-
 
       </header>
     </div>
