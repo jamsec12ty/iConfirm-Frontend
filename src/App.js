@@ -5,6 +5,10 @@ import * as Constants from './constants.js';
 import axios from 'axios';
 import graphql from 'graphql';
 import Employee from './components/Employee.js';
+import { HashRouter as Router, Route } from 'react-router-dom'
+import Login from './components/Login.js';
+import User from './components/User.js';
+import Venue from './components/Venue.js';
 
 function App() {
 
@@ -24,34 +28,37 @@ function App() {
 
     fetchData();
 
+<<<<<<< HEAD
   }, []); //empty array here means run only when component mounts.
+=======
+  }, []);
+>>>>>>> a0484872572f9a9fb1f3bf597ba7116609952778
 
   return (
+
     <div className="App">
       <header className="App-header">
+        <Router>
+          <div>
+            <Route exact path="/login" component={ Login } />
+            <Route exact path="/user" component={ User } />
+            <Route exact path="/venue" component={ Venue } />
 
-        <ul>
-          {data.employees.map(item => (
+          </div>
+        </Router>
 
-            <li key={item.id}>
-              <Employee item={item}/>
-            </li>
+      {
+        //   <ul>
+        //   {data.employees.map(item => (
+        //
+        //     <li key={item.id}>
+        //       <Employee item={item}/>
+        //     </li>
+        //
+        //   ))}
+        // </ul>
+      }
 
-          ))}
-        </ul>
-
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
