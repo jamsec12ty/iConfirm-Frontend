@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 export const GRAPHQL_API = "http://localhost:1337/graphql";
 
-//TODO admin: 
+//TODO admin:
 export const GET_VENUES_QUERY = gql`
 query {
   venues{
@@ -101,23 +101,34 @@ query {
 //   }
 // }`;
 //
-// export const GET_EMPLOYEES_QUERY = gql`
-// query {
-//   employees {
-//     employeeType
-//     profilePic
-//     name
-//     dob
-//     address
-//     phone
-//     email
-//     passwordDigest
-//     emergencyContactName
-//     emergencyContactPhone
-//     securityLicNo
-//     securityLicStatus
-//     rsaNo
-//     rsaLicStatus
-//     firstAidExp
-//   }
-// }`;
+export const GET_EMPLOYEE_QUERY = gql`
+query {
+  authenticatedEmployee {
+    employeeType
+    profilePic
+    name
+    dob
+    address
+    phone
+    email
+    passwordDigest
+    emergencyContactName
+    emergencyContactPhone
+    securityLicNo
+    securityLicStatus
+    rsaNo
+    rsaLicStatus
+    firstAidExp
+    shifts{
+      date
+      clockOnDate
+      clockOffDate
+      shiftConfirmed
+      roster{
+        venue{
+          name
+        }
+      }
+    }
+  }
+}`;

@@ -19,6 +19,7 @@ function App() {
 
   // const [data, setData] = useState( { employees: [] } );
   console.log(error, loading, data );
+
   const [currentUser, setCurrentUser] = useState( {} );
 
 
@@ -83,15 +84,7 @@ function App() {
         </Router>
 
 
-         <div>
-           {loading?<h1>Loading</h1>:data.venues.map(item => (
 
-             <div key={item.name}>
-               <Venue item={item}/>
-             </div>
-
-           ))}
-         </div>
 
 
 
@@ -104,3 +97,14 @@ function App() {
 }
 
 export default App;
+
+
+// <div>
+//   {loading?<h1>Loading</h1>:data.venues.map(item => (
+//
+//     <div key={item.name}>
+//       <Venue item={item}/>
+//     </div>
+//
+//   ))}
+// </div>
