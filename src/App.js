@@ -13,30 +13,60 @@ import Venue from './components/Venue.js';
 function App() {
 
   const [data, setData] = useState( { employees: [] } );
+  const [currentUser, setCurrentUser] = useState( {} );
 
   useEffect( () => {
-    const fetchData = async () => {
+    // const fetchData = async () => {
+    //
+    //   const queryResult = await axios.post (
+    //     Constants.GRAPHQL_API, {
+    //       query: Constants.GET_EMPLOYEES_QUERY
+    //     }
+    //   );
+    //   const result = queryResult.data.data;
+    //   setData({ employees: result.employees })
+    // };
+    //
+    // fetchData();
 
-      const queryResult = await axios.post (
-        Constants.GRAPHQL_API, {
-          query: Constants.GET_EMPLOYEES_QUERY
-        }
-      );
-      const result = queryResult.data.data;
-      setData({ employees: result.employees })
-    };
+   const token = localStorage.getItem("token")
+   const user = localStorage.getItem("user")
+   console.log(token)
 
-    fetchData();
+   if( token !== null && user !== null) {
+     setCurrentUser(JSON.parse(user) );
+     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+   }
 
   }, []); /*{empty array here means run only when component mounts.}*/
+
+  const performLogin = (token, user) => {
+    console.log('In performLogin: ', token, user);
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    localStorage.setItem( 'token', token);
+    localStorage.setItem( 'user', JSON.stringify(user) );
+    setCurrentUser(user);
+  };
+
+  const performLogout = (token, user) => {
+    delete axios.defaults.headers.common.Authorization
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      console.log(user);
+      setCurrentUser('');
+  };
 
   return (
 
     <div className="App">
       <header className="App-header">
+        <nav>
+          <a href="#" onClick={performLogout}>Logout</a>
+
+        </nav>
         <Router>
           <div>
-            <Route exact path="/login" component={ Login } />
+            <Route exact path="/login" render={ (props) => <Login {...props} onLogin={performLogin} /> }/>
             <Route exact path="/user" component={ User } />
             <Route exact path="/venue" component={ Venue } />
           </div>
