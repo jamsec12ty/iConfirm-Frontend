@@ -24,7 +24,7 @@ function App() {
 
     fetchData();
 
-  })
+  }, []); //empty array here means run only when component mounts.
 
   return (
     <div className="App">
