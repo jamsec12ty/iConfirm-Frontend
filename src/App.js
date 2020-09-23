@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import './stylesheet/styles.css';
 import * as Constants from './constants.js';
 import axios from 'axios';
-import graphql from 'graphql';
 import Employee from './components/Employee.js';
-import { HashRouter as Router, Route } from 'react-router-dom'
+import { HashRouter as Router, Route } from 'react-router-dom';
 import Login from './components/Login.js';
 import User from './components/User.js';
 import Venue from './components/Venue.js';
+
 
 function App() {
 
@@ -28,11 +28,7 @@ function App() {
 
     fetchData();
 
-<<<<<<< HEAD
-  }, []); //empty array here means run only when component mounts.
-=======
-  }, []);
->>>>>>> a0484872572f9a9fb1f3bf597ba7116609952778
+  }, []); /*{empty array here means run only when component mounts.}*/
 
   return (
 
@@ -43,24 +39,26 @@ function App() {
             <Route exact path="/login" component={ Login } />
             <Route exact path="/user" component={ User } />
             <Route exact path="/venue" component={ Venue } />
-
           </div>
         </Router>
 
-      {
-        //   <ul>
-        //   {data.employees.map(item => (
-        //
-        //     <li key={item.id}>
-        //       <Employee item={item}/>
-        //     </li>
-        //
-        //   ))}
-        // </ul>
-      }
+
+          <ul>
+          {data.employees.map(item => (
+
+            <li key={item.name}>
+              <Employee item={item}/>
+            </li>
+
+          ))}
+        </ul>
+
+
 
       </header>
     </div>
+
+
   );
 }
 
