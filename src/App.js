@@ -82,14 +82,11 @@ function App() {
           </div>
         </Router>
 
-<<<<<<< HEAD
 
 
 
 
 
-=======
->>>>>>> a2e293e28a7b45a5ab1edfe3b5dff52be6e77bce
       </header>
     </div>
 
