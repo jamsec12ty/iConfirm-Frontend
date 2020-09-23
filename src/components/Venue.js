@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-const Venue = () => {
+const Venue = (props) => {
 
   useEffect(() => {
     axios.get('http://localhost:1337/login')
@@ -14,7 +14,7 @@ const Venue = () => {
 
   return (
     <div>
-      <h2>Hello Venue</h2>
+        <a href={props.item.url}>{props.item.name}</a>
     </div>
   );
 };

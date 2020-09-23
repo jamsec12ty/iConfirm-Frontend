@@ -8,11 +8,17 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import Login from './components/Login.js';
 import User from './components/User.js';
 import Venue from './components/Venue.js';
+import {GET_VENUES_QUERY} from './constants';
+import { useQuery, gql } from '@apollo/client';
+
 
 
 function App() {
 
-  const [data, setData] = useState( { employees: [] } );
+  const { loading, error, data } = useQuery(GET_VENUES_QUERY);
+
+  // const [data, setData] = useState( { employees: [] } );
+  console.log(error, loading, data );
   const [currentUser, setCurrentUser] = useState( {} );
 
   useEffect( () => {
@@ -58,6 +64,7 @@ function App() {
 
   return (
 
+
     <div className="App">
       <header className="App-header">
         <nav>
@@ -73,20 +80,21 @@ function App() {
         </Router>
 
 
-          <ul>
-          {data.employees.map(item => (
+         <div>
+           {loading?<h1>Loading</h1>:data.venues.map(item => (
 
-            <li key={item.name}>
-              <Employee item={item}/>
-            </li>
+             <div key={item.name}>
+               <Venue item={item}/>
+             </div>
 
-          ))}
-        </ul>
+           ))}
+         </div>
 
 
 
       </header>
     </div>
+
 
 
   );
