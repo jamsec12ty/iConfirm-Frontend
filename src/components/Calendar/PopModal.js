@@ -26,7 +26,7 @@ function PopModal(){
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
+
   }
 
   function closeModal(){
@@ -35,7 +35,7 @@ function PopModal(){
 
     return (
       <div>
-        <button onClick={openModal} >Book Employee</button>
+        <button onClick={openModal}>Add Shift</button>
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
@@ -44,9 +44,8 @@ function PopModal(){
           contentLabel="Example Modal"
         >
 
-          <h2 ref={_subtitle => (subtitle = _subtitle)}>Hello</h2>
-          <button onClick={closeModal}>close</button>
-          <div>I am a modal</div>
+
+          <button onClick={closeModal}>x</button>
           <form>
           <DropDownEmployee />
           </form>

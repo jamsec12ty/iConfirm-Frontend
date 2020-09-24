@@ -104,7 +104,7 @@ query {
 //
 export const GET_EMPLOYEE_QUERY = gql`
 query {
-  employees {
+  authenticatedEmployee {
     employeeType
     profilePic
     name

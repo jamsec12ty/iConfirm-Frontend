@@ -19,6 +19,7 @@ const localizer = momentLocalizer(moment)
 
 const Selectable = (props) => {
   const venueId = "5f6b9188e0585be2b0a53a73";
+  const [modalIsOpen,setIsOpen] = React.useState(false);
   const [getVenueDetails, { loading, data: { venue } = {} }] = useLazyQuery(
     GET_VENUE_QUERY
   );
@@ -50,7 +51,8 @@ const Selectable = (props) => {
 
     return (
       <>
-        <PopModal/>
+    <PopModal />
+        <br/>
         <ExampleControlSlot.Entry waitForOutlet>
           <strong>
             Click an event to see more info, or drag the mouse over the calendar

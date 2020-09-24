@@ -1,7 +1,7 @@
 import React from 'react';
 
 const VenueShowScreen = (props) => {
-
+  console.log(props);
   const item = props.location.state.item
   return (
     <div>

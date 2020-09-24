@@ -14,14 +14,14 @@ import EditVenue from "./components/EditVenue";
 // import MyCalendar from "./components/Calendar/MyCalendar.js";
 import VenueScreen from "./screens/VenueScreen.js";
 import DropDownEmployee from "./components/Calendar/DropDownEmployee.js";
-import Menu from "./components/Calendar/Menu.js"
-import VenueShowScreen from "./screens/VenueShowScreen.js";
+// import VenueShowScreen from "./screens/VenueShowScreen.js";
 
 //this is the create event example.
 import Selectable from "./components/Calendar/Selectable.js";
+import Menu from "./components/Calendar/Menu.js";
 
 
-function App() {
+function App(props) {
 
   const [setData] = useState( { employees: [] } );
   // console.log(error, loading, data);
@@ -85,7 +85,6 @@ function App() {
 
         </nav>
       </header>
-
         <div>
           <Switch>
           <Route
@@ -97,8 +96,8 @@ function App() {
             <Route exact path="/user" component={User} />
             <Route exact path="/dropdownemployee" component={DropDownEmployee} />
             <Route exact path="/mycalendar" component={Menu} />
-            <Route exact path="/venue/:venueId" component={EditVenue} />
-            <VenueShowScreen  {...props}/>} />
+            <Route exact path="/venue/:venueId" component={Venue} />
+
             <Route exact path="/employees" component={Employee} />
 
             <Route

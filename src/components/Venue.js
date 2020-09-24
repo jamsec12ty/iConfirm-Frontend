@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import Menu from "./Calendar/Menu.js";
 
 const Venue = (props) => {
+
 
   useEffect(() => {
     axios.get('http://localhost:1337/login')
@@ -15,10 +17,12 @@ const Venue = (props) => {
   }, []);
 
   return (
-    <div>
+
+      <div>
         <br/>
         <Link to={`/venue/${props.item._id}`}>{props.item.name}</Link>
-    </div>
+      </div>
+
   );
 };
 

@@ -6,6 +6,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
+
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimpleSelect() {
   const classes = useStyles();
-  const [age, setAge] = React.useState('');
+  const [age, setAge] = React.useState([]);
 
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -27,20 +28,27 @@ export default function SimpleSelect() {
   return (
     <div>
       <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel id="demo-simple-select-outlined-label">Age</InputLabel>
+        <InputLabel id="demo-simple-select-outlined-label">Employee</InputLabel>
         <Select
           labelId="demo-simple-select-outlined-label"
           id="demo-simple-select-outlined"
           value={age}
           onChange={handleChange}
-          label="Age"
+          label="Employees"
         >
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value={10}>Ahmed Elchranni</MenuItem>
+          <MenuItem value={20}>Nemo Petrovic</MenuItem>
+          <MenuItem value={30}>Jamil Samarani</MenuItem>
+          <MenuItem value={30}>Anthony Di Lorenzo</MenuItem>
+          <MenuItem value={30}>Milos Inic</MenuItem>
+          <MenuItem value={30}>Mirko Drca</MenuItem>
+          <MenuItem value={30}>Michael Kouter</MenuItem>
+          <MenuItem value={30}>Sam Aboud</MenuItem>
+          <MenuItem value={30}>Daniel Harris</MenuItem>
+          <MenuItem value={30}>Haysam Abdallah</MenuItem>
         </Select>
       </FormControl>
     </div>
