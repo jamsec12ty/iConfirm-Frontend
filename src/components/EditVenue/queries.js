@@ -24,7 +24,6 @@ export const GET_VENUE_QUERY = gql`
 
 export const UPSERT_VENUE_MUTATION = gql`
   mutation upsertVenue(
-    $_id: String
     $logo: String
     $name: String
     $address: String

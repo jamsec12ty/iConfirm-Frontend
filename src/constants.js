@@ -101,34 +101,34 @@ query {
 //   }
 // }`;
 //
-export const GET_EMPLOYEE_QUERY = gql`
-query {
-  authenticatedEmployee {
-    employeeType
-    profilePic
-    name
-    dob
-    address
-    phone
-    email
-    passwordDigest
-    emergencyContactName
-    emergencyContactPhone
-    securityLicNo
-    securityLicStatus
-    rsaNo
-    rsaLicStatus
-    firstAidExp
-    shifts{
-      date
-      clockOnDate
-      clockOffDate
-      shiftConfirmed
-      roster{
-        venue{
-          name
-        }
-      }
-    }
-  }
-}`;
+// export const GET_EMPLOYEE_QUERY = gql`
+// query {
+//   authenticatedEmployee {
+//     employeeType
+//     profilePic
+//     name
+//     dob
+//     address
+//     phone
+//     email
+//     passwordDigest
+//     emergencyContactName
+//     emergencyContactPhone
+//     securityLicNo
+//     securityLicStatus
+//     rsaNo
+//     rsaLicStatus
+//     firstAidExp
+//     shifts{
+//       date
+//       clockOnDate
+//       clockOffDate
+//       shiftConfirmed
+//       roster{
+//         venue{
+//           name
+//         }
+//       }
+//     }
+//   }
+// }`;
