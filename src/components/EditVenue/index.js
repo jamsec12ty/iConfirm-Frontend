@@ -5,11 +5,11 @@ import {
   GET_VENUE_QUERY,
   UPSERT_VENUE_MUTATION,
 } from "./queries";
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 
 const EditVenue = (props) => {
   const { venueId } = useParams();
-
+  const [isSubmitted,setIsSubmitted] = useState(false)
   const [formData, setFormData] = useState({
     logo: "",
     name: "",
@@ -51,13 +51,23 @@ const EditVenue = (props) => {
     } catch(err){
       console.log("Error", err);
     }
-    alert("Venue Updated");
+    // alert("Venue Updated");
+    setIsSubmitted(true)
+
   };
 
   const handleDelete = async () => {
     await deleteVenue({ variables: { _id: venueId } });
   };
 
+if(isSubmitted){
+  return <Redirect
+              to={{
+              pathname: "/venue/created",
+              state: { item: formData }
+            }}
+          />
+}
   return (
     <div>
       <form onSubmit={handleSubmit}>
