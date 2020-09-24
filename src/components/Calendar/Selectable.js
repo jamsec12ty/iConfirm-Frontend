@@ -3,7 +3,10 @@ import { Calendar, Views, momentLocalizer } from 'react-big-calendar'
 import loadedEvents from './events'
 import ExampleControlSlot from './ExampleControlSlot'
 import moment from 'moment'
-
+import { GET_VENUE_QUERY } from "../EditVenue/queries";
+import { useLazyQuery, gql } from "@apollo/client";
+import DropDownEmployee from "./DropDownEmployee";
+import PopModal from "./PopModal"
 
 const propTypes = {}
 const localizer = momentLocalizer(moment)
@@ -15,6 +18,18 @@ const localizer = momentLocalizer(moment)
 //   }
 
 const Selectable = (props) => {
+  const venueId = "5f6b9188e0585be2b0a53a73";
+  const [getVenueDetails, { loading, data: { venue } = {} }] = useLazyQuery(
+    GET_VENUE_QUERY
+  );
+
+  console.log({venue});
+
+  useEffect(() => {
+    if (venueId) {
+      getVenueDetails({ variables: { id: venueId } });
+    }
+  }, [getVenueDetails, venueId]);
 
   const [events, setEvents] = useState(loadedEvents);
 
@@ -35,6 +50,7 @@ const Selectable = (props) => {
 
     return (
       <>
+        <PopModal/>
         <ExampleControlSlot.Entry waitForOutlet>
           <strong>
             Click an event to see more info, or drag the mouse over the calendar

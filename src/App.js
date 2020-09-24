@@ -13,6 +13,8 @@ import Venue from "./components/Venue.js";
 import EditVenue from "./components/EditVenue";
 // import MyCalendar from "./components/Calendar/MyCalendar.js";
 import VenueScreen from "./screens/VenueScreen.js";
+import DropDownEmployee from "./components/Calendar/DropDownEmployee.js";
+import Menu from "./components/Calendar/Menu.js"
 
 //this is the create event example.
 import Selectable from "./components/Calendar/Selectable.js";
@@ -20,29 +22,24 @@ import Selectable from "./components/Calendar/Selectable.js";
 
 function App() {
 
-<<<<<<< HEAD
-  const [setData] = useState( { employees: [] } );
-  console.log(error, loading, data);
-=======
   // const [data, setData] = useState( { employees: [] } );
   // console.log(error, loading, data);
->>>>>>> c670427481fc94ae572ff3057a07716cdab42238
 
   const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
-    const fetchData = async () => {
-
-      const queryResult = await axios.post (
-        Constants.GRAPHQL_API, {
-          query: Constants.GET_VENUES_QUERY
-        }
-      );
-      const result = queryResult.data.data;
-      setData({ employees: result.employees })
-    };
-
-    fetchData();
+    // const fetchData = async () => {
+    //
+    //   const queryResult = await axios.post (
+    //     Constants.GRAPHQL_API, {
+    //       query: Constants.GET_VENUES_QUERY
+    //     }
+    //   );
+    //   const result = queryResult.data.data;
+    //   setData({ employees: result.employees })
+    // };
+    //
+    // fetchData();
 
     const token = localStorage.getItem("token");
     const user = localStorage.getItem("user");
@@ -89,8 +86,10 @@ function App() {
               render={(props) => <Login {...props} onLogin={performLogin} />}
             />
             <Route exact path="/user" component={User} />
-            <Route exact path="/mycalendar" component={Selectable} />
+            <Route exact path="/dropdownemployee" component={DropDownEmployee} />
+            <Route exact path="/mycalendar" component={Menu} />
             <Route exact path="/venue/:venueId" component={EditVenue} />
+            <Route exact path="/employees" component={Employee} />
 
             <Route
               exact
