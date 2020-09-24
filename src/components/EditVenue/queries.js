@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const DELETE_VENUE_MUTATION = gql`
   mutation deleteVenue($_id: String) {
-    deleteVenue(_id: $_id) {
+    deleteVenue(id: $_id) {
       _id
     }
   }
