@@ -34,7 +34,7 @@ export const UPSERT_VENUE_MUTATION = gql`
     $liquorLicNo: String
     $liquorLicStatus: Boolean
     $masterLicNo: String
-    #    $masterLicExp: String,
+    $masterLicExp: String,
     $masterLicStatus: Boolean
     $membershipDate: String
   ) {
