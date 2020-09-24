@@ -11,13 +11,10 @@ const EditShift = () => {
   const { shiftId } = useParams();
 
   const [formData, setFormData] = useState({
-    _id: "",
     date: "",
     clockOnDate: "",
     clockOffDate: "",
-    employee: "",
-    roster: "",
-    shiftConfirmed: false,
+    shiftConfirmed: false
   });
 
   const [getShiftDetails, { loading, data: { shift } = {} }] = useLazyQuery(
@@ -50,54 +47,32 @@ const EditShift = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h3>Logo</h3>
+        <h3>Date:</h3>
         <input
-          value={formData.logo}
+          value={formData.date}
           onChange={(e) => {
-            setFormData({ ...formData, logo: e.target.value });
+            setFormData({ ...formData, date: e.target.value });
           }}
         />
-        <h3>Business Name</h3>
+        <h3>Shift Start</h3>
         <input
-          value={formData.name}
+          value={formData.clockOnDate}
           onChange={(e) => {
-            setFormData({ ...formData, name: e.target.value });
+            setFormData({ ...formData, clockOnDate: e.target.value });
           }}
         />
-        <h3>Address</h3>
+        <h3>Finish Shift</h3>
         <input
-          value={formData.address}
+          value={formData.clockOffDate}
           onChange={(e) => {
-            setFormData({ ...formData, address: e.target.value });
+            setFormData({ ...formData, clockOffDate: e.target.value });
           }}
         />
-        <h3>Phone</h3>
+        <h3>Confirm</h3>
         <input
-          value={formData.phone}
+          value={formData.shiftConfirmed}
           onChange={(e) => {
-            setFormData({ ...formData, phone: e.target.value });
-          }}
-        />
-        <h3>Email</h3>
-        <input
-          value={formData.email}
-          onChange={(e) => {
-            setFormData({ ...formData, email: e.target.value });
-          }}
-        />
-        <h3>Licensee Name</h3>
-        <input
-          value={formData.licenseeName}
-          onChange={(e) => {
-            setFormData({ ...formData, licenseeName: e.target.value });
-          }}
-        />
-
-        <h3>Liquor License Num:</h3>
-        <input
-          value={formData.liquorLicNo}
-          onChange={(e) => {
-            setFormData({ ...formData, liquorLicNo: e.target.value });
+            setFormData({ ...formData, shiftConfirmed: e.target.value });
           }}
         />
 
