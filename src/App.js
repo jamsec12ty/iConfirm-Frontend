@@ -6,13 +6,14 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import * as Constants from "./constants.js";
 import axios from "axios";
 import Employee from "./components/Employee.js";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect ,Link,Switch} from "react-router-dom";
 import Login from "./components/Login.js";
 import User from "./components/User.js";
 import Venue from "./components/Venue.js";
 import EditVenue from "./components/EditVenue";
 // import MyCalendar from "./components/Calendar/MyCalendar.js";
 import VenueScreen from "./screens/VenueScreen.js";
+import VenueShowScreen from "./screens/VenueShowScreen.js";
 
 //this is the create event example.
 import Selectable from "./components/Calendar/Selectable.js";
@@ -21,7 +22,7 @@ import Selectable from "./components/Calendar/Selectable.js";
 function App() {
 
   const [setData] = useState( { employees: [] } );
-  console.log(error, loading, data);
+  // console.log(error, loading, data);
 
   const [currentUser, setCurrentUser] = useState();
 
@@ -67,11 +68,13 @@ function App() {
 
   console.log({ currentUser });
   return (
+    <Router>
     <div className="App">
       <header style={{width:"100%",flex:"row",height:"30px"}}>
         <nav>
           <Link to="/user" >User</Link>
-          <Link to="/venue" >Venue</Link>
+            <Link to="/venue" >Venue</Link>
+          <Link to="/signup" >signup</Link>
           {currentUser ? (
             <a href="#" onClick={performLogout}>
               Logout
@@ -80,17 +83,19 @@ function App() {
 
         </nav>
       </header>
-      <Router>
+
         <div>
+          <Switch>
           <Route
             exact
             path={["/login", "/"]}
             render={(props) => <Login {...props} onLogin={performLogin} />}
             />
+          <Route exact path="/signup" component={EditVenue} />
             <Route exact path="/user" component={User} />
             <Route exact path="/mycalendar" component={Selectable} />
-            <Route exact path="/venue/:venueId" component={EditVenue} />
-
+            <Route exact path="/venue/created" component={(props) => <VenueShowScreen  {...props}/>} />
+<Route exact path="/venue/:venueId" component={EditVenue} />
             <Route
               exact
               path="/venue"
@@ -98,11 +103,14 @@ function App() {
                 <VenueScreen {...props} />
               )}
             />
+          </Switch>
+
           </div>
 
-        </Router>
-      </header>
+
     </div>
+  </Router>
+
   );
 }
 
