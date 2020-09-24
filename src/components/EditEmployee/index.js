@@ -60,54 +60,70 @@ const EditEmployee = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h3>Logo</h3>
-        <input
-          value={formData.logo}
-          onChange={(e) => {
-            setFormData({ ...formData, logo: e.target.value });
-          }}
-        />
-        <h3>Business Name</h3>
+        <h4>Name</h4>
         <input
           value={formData.name}
           onChange={(e) => {
             setFormData({ ...formData, name: e.target.value });
           }}
         />
-        <h3>Address</h3>
+      <h4>Address</h4>
         <input
           value={formData.address}
           onChange={(e) => {
             setFormData({ ...formData, address: e.target.value });
           }}
         />
-        <h3>Phone</h3>
+      <h4>Phone</h4>
         <input
           value={formData.phone}
           onChange={(e) => {
             setFormData({ ...formData, phone: e.target.value });
           }}
         />
-        <h3>Email</h3>
+      <h4>Email</h4>
         <input
           value={formData.email}
           onChange={(e) => {
             setFormData({ ...formData, email: e.target.value });
           }}
         />
-        <h3>Licensee Name</h3>
+      <h4>Emergency Contact Name</h4>
         <input
-          value={formData.licenseeName}
+          value={formData.emergencyContactName}
           onChange={(e) => {
-            setFormData({ ...formData, licenseeName: e.target.value });
+            setFormData({ ...formData, emergencyContactName: e.target.value });
+          }}
+        />
+      <h4>Emergency Contact Phone</h4>
+        <input
+          value={formData.emergencyContactPhone}
+          onChange={(e) => {
+            setFormData({ ...formData, emergencyContactPhone: e.target.value });
           }}
         />
 
-        <h3>Liquor License Num:</h3>
+      <h4>Security License No:</h4>
         <input
-          value={formData.liquorLicNo}
+          value={formData.securityLicNo}
           onChange={(e) => {
-            setFormData({ ...formData, liquorLicNo: e.target.value });
+            setFormData({ ...formData, securityLicNo: e.target.value });
+          }}
+        />
+
+      <h4>Security License Status:</h4>
+        <input
+          value={formData.securityLicStatus}
+          onChange={(e) => {
+            setFormData({ ...formData, securityLicStatus: e.target.value });
+          }}
+        />
+
+      <h4>First Aid Expiry:</h4>
+        <input
+          value={formData.firstAidExp}
+          onChange={(e) => {
+            setFormData({ ...formData, firstAidExp: e.target.value });
           }}
         />
 
