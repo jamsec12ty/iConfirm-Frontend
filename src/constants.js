@@ -5,6 +5,7 @@ export const GRAPHQL_API = "http://localhost:1337/graphql";
 export const GET_VENUES_QUERY = gql`
 query {
   venues{
+  _id,
   logo,
   name,
   address,

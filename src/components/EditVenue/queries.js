@@ -11,6 +11,7 @@ export const DELETE_VENUE_MUTATION = gql`
 export const GET_VENUE_QUERY = gql`
   query getVenue($id: String) {
     venue(id: $id) {
+      _id
       logo
       name
       address
@@ -24,32 +25,31 @@ export const GET_VENUE_QUERY = gql`
 
 export const UPSERT_VENUE_MUTATION = gql`
   mutation upsertVenue(
-    $_id: String
-    $logo: String
-    $name: String
-    $address: String
-    $phone: String
-    $email: String
-    $licenseeName: String
-    $liquorLicNo: String
-    $liquorLicStatus: Boolean
-    $masterLicNo: String
+    $logo: String,
+    $name: String,
+    $address: String,
+    $phone: String,
+    $email: String,
+    $licenseeName: String,
+    $liquorLicNo: String,
+    $liquorLicStatus: Boolean,
+    $masterLicNo: String,
     $masterLicExp: String,
-    $masterLicStatus: Boolean
+    $masterLicStatus: Boolean,
     $membershipDate: String
   ) {
     upsertVenue(
-      _id: $_id
-      logo: $logo
-      name: $name
-      address: $address
-      phone: $phone
-      email: $email
-      licenseeName: $licenseeName
-      liquorLicNo: $liquorLicNo
-      liquorLicStatus: $liquorLicStatus
-      masterLicNo: $masterLicNo
-      masterLicStatus: $masterLicStatus
+      logo: $logo,
+      name: $name,
+      address: $address,
+      phone: $phone,
+      email: $email,
+      licenseeName: $licenseeName,
+      liquorLicNo: $liquorLicNo,
+      liquorLicStatus: $liquorLicStatus,
+      masterLicNo: $masterLicNo,
+      masterLicExp: $masterLicExp,
+      masterLicStatus: $masterLicStatus,
       membershipDate: $membershipDate
     ) {
       logo
@@ -59,6 +59,11 @@ export const UPSERT_VENUE_MUTATION = gql`
       email
       licenseeName
       liquorLicNo
+      liquorLicStatus
+      masterLicNo
+      masterLicExp
+      masterLicStatus
+      membershipDate
     }
   }
 `;

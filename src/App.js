@@ -4,20 +4,17 @@ import "./stylesheet/styles.css";
 import * as Constants from "./constants.js";
 import axios from "axios";
 import Employee from "./components/Employee.js";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Login from "./components/Login.js";
 import User from "./components/User.js";
 import Venue from "./components/Venue.js";
-import { GET_VENUES_QUERY } from "./constants";
-import { useQuery, gql } from "@apollo/client";
 import EditVenue from "./components/EditVenue";
 import VenueScreen from "./screens/VenueScreen.js";
 
 function App() {
-  const { loading, error, data } = useQuery(GET_VENUES_QUERY);
 
   // const [data, setData] = useState( { employees: [] } );
-  console.log(error, loading, data);
+  // console.log(error, loading, data);
 
   const [currentUser, setCurrentUser] = useState();
 
@@ -76,7 +73,7 @@ function App() {
           <div>
             <Route
               exact
-              path="/login"
+              path={["/login", "/"]}
               render={(props) => <Login {...props} onLogin={performLogin} />}
             />
             <Route exact path="/user" component={User} />
@@ -85,7 +82,7 @@ function App() {
               exact
               path="/venue"
               component={(props) => (
-                <VenueScreen {...props} data={data} loading={loading} />
+                <VenueScreen {...props} />
               )}
             />
           </div>
