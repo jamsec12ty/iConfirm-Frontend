@@ -61,33 +61,36 @@ function App() {
   console.log({ currentUser });
   return (
     <div className="App">
-      <header className="App-header">
+      <header style={{width:"100%",flex:"row",height:"30px"}}>
         <nav>
-          {currentUser && (
+          <Link to="/user" >User</Link>
+          <Link to="/venue" >Venue</Link>
+          {currentUser ? (
             <a href="#" onClick={performLogout}>
               Logout
             </a>
-          )}
+          ):<a href="#" ></a>}
+
         </nav>
-        <Router>
-          <div>
-            <Route
-              exact
-              path={["/login", "/"]}
-              render={(props) => <Login {...props} onLogin={performLogin} />}
-            />
-            <Route exact path="/user" component={User} />
-            <Route exact path="/venue/:venueId" component={EditVenue} />
-            <Route
-              exact
-              path="/venue"
-              component={(props) => (
-                <VenueScreen {...props} />
-              )}
-            />
-          </div>
-        </Router>
       </header>
+      <Router>
+        <div>
+          <Route
+            exact
+            path={["/login", "/"]}
+            render={(props) => <Login {...props} onLogin={performLogin} />}
+            />
+          <Route exact path="/user" component={User} />
+          <Route exact path="/venue/:venueId" component={EditVenue} />
+          <Route
+            exact
+            path="/venue"
+            component={(props) => (
+              <VenueScreen {...props} />
+            )}
+            />
+        </div>
+      </Router>
     </div>
   );
 }
