@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-
+import {Link} from 'react-router-dom';
 
 const Venue = (props) => {
 
@@ -17,7 +17,7 @@ const Venue = (props) => {
   return (
     <div>
         <br/>
-        <a href={props.item.url}>{props.item.name}</a>
+        <Link to={`/venue/${props.item._id}`}>{props.item.name}</Link>
     </div>
   );
 };

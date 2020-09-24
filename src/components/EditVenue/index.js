@@ -7,7 +7,7 @@ import {
 } from "./queries";
 import { useParams } from "react-router-dom";
 
-const EditVenue = () => {
+const EditVenue = (props) => {
   const { venueId } = useParams();
 
   const [formData, setFormData] = useState({
@@ -44,7 +44,13 @@ const EditVenue = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await upsertVenue({ variables: { ...formData, _id: venueId } });
+    try{
+      const newVenue = await upsertVenue({ variables: { ...formData, _id: venueId } });
+      console.log("New Venue:", newVenue);
+      props.onCreateSuccess(newVenue.data.upsertVenue);
+    } catch(err){
+      console.log("Error", err);
+    }
     alert("Venue Updated");
   };
 

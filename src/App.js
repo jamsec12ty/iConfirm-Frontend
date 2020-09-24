@@ -6,12 +6,10 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import * as Constants from "./constants.js";
 import axios from "axios";
 import Employee from "./components/Employee.js";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Login from "./components/Login.js";
 import User from "./components/User.js";
 import Venue from "./components/Venue.js";
-import { GET_VENUES_QUERY } from "./constants";
-import { useQuery, gql } from "@apollo/client";
 import EditVenue from "./components/EditVenue";
 // import MyCalendar from "./components/Calendar/MyCalendar.js";
 import VenueScreen from "./screens/VenueScreen.js";
@@ -21,10 +19,14 @@ import Selectable from "./components/Calendar/Selectable.js";
 
 
 function App() {
-  const { loading, error, data } = useQuery(GET_VENUES_QUERY);
 
+<<<<<<< HEAD
   const [setData] = useState( { employees: [] } );
   console.log(error, loading, data);
+=======
+  // const [data, setData] = useState( { employees: [] } );
+  // console.log(error, loading, data);
+>>>>>>> c670427481fc94ae572ff3057a07716cdab42238
 
   const [currentUser, setCurrentUser] = useState();
 
@@ -83,7 +85,7 @@ function App() {
           <div>
             <Route
               exact
-              path="/login"
+              path={["/login", "/"]}
               render={(props) => <Login {...props} onLogin={performLogin} />}
             />
             <Route exact path="/user" component={User} />
@@ -94,7 +96,7 @@ function App() {
               exact
               path="/venue"
               component={(props) => (
-                <VenueScreen {...props} data={data} loading={loading} />
+                <VenueScreen {...props} />
               )}
             />
           </div>
