@@ -25,6 +25,17 @@ export const GET_VENUE_QUERY = gql`
 
 export const UPSERT_VENUE_MUTATION = gql`
   mutation upsertVenue(
+<<<<<<< HEAD
+    $logo: String
+    $name: String
+    $address: String
+    $phone: String
+    $email: String
+    $licenseeName: String
+    $liquorLicNo: String
+    $liquorLicStatus: Boolean
+    $masterLicNo: String
+=======
     $logo: String,
     $name: String,
     $address: String,
@@ -34,6 +45,7 @@ export const UPSERT_VENUE_MUTATION = gql`
     $liquorLicNo: String,
     $liquorLicStatus: Boolean,
     $masterLicNo: String,
+>>>>>>> c670427481fc94ae572ff3057a07716cdab42238
     $masterLicExp: String,
     $masterLicStatus: Boolean,
     $membershipDate: String

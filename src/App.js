@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
+// import "./App.css";
 import "./stylesheet/styles.css";
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+// import '!style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css'
 import * as Constants from "./constants.js";
 import axios from "axios";
 import Employee from "./components/Employee.js";
@@ -9,28 +11,33 @@ import Login from "./components/Login.js";
 import User from "./components/User.js";
 import Venue from "./components/Venue.js";
 import EditVenue from "./components/EditVenue";
+// import MyCalendar from "./components/Calendar/MyCalendar.js";
 import VenueScreen from "./screens/VenueScreen.js";
+
+//this is the create event example.
+import Selectable from "./components/Calendar/Selectable.js";
+
 
 function App() {
 
-  // const [data, setData] = useState( { employees: [] } );
-  // console.log(error, loading, data);
+  const [setData] = useState( { employees: [] } );
+  console.log(error, loading, data);
 
   const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
-    // const fetchData = async () => {
-    //
-    //   const queryResult = await axios.post (
-    //     Constants.GRAPHQL_API, {
-    //       query: Constants.GET_EMPLOYEES_QUERY
-    //     }
-    //   );
-    //   const result = queryResult.data.data;
-    //   setData({ employees: result.employees })
-    // };
-    //
-    // fetchData();
+    const fetchData = async () => {
+
+      const queryResult = await axios.post (
+        Constants.GRAPHQL_API, {
+          query: Constants.GET_VENUES_QUERY
+        }
+      );
+      const result = queryResult.data.data;
+      setData({ employees: result.employees })
+    };
+
+    fetchData();
 
     const token = localStorage.getItem("token");
     const user = localStorage.getItem("user");
@@ -80,29 +87,23 @@ function App() {
             path={["/login", "/"]}
             render={(props) => <Login {...props} onLogin={performLogin} />}
             />
-          <Route exact path="/user" component={User} />
-          <Route exact path="/venue/:venueId" component={EditVenue} />
-          <Route
-            exact
-            path="/venue"
-            component={(props) => (
-              <VenueScreen {...props} />
-            )}
+            <Route exact path="/user" component={User} />
+            <Route exact path="/mycalendar" component={Selectable} />
+            <Route exact path="/venue/:venueId" component={EditVenue} />
+
+            <Route
+              exact
+              path="/venue"
+              component={(props) => (
+                <VenueScreen {...props} />
+              )}
             />
-        </div>
-      </Router>
+          </div>
+
+        </Router>
+      </header>
     </div>
   );
 }
 
 export default App;
-
-// <div>
-//   {loading?<h1>Loading</h1>:data.venues.map(item => (
-//
-//     <div key={item.name}>
-//       <Venue item={item}/>
-//     </div>
-//
-//   ))}
-// </div>
