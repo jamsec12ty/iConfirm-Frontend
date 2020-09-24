@@ -14,7 +14,9 @@ const EditShift = () => {
     date: "",
     clockOnDate: "",
     clockOffDate: "",
-    shiftConfirmed: false
+    shiftConfirmed: false,
+    employee: "",
+    roster: ""
   });
 
   const [getShiftDetails, { loading, data: { shift } = {} }] = useLazyQuery(
