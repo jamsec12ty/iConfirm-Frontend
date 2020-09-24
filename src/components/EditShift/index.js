@@ -11,18 +11,13 @@ const EditShift = () => {
   const { shiftId } = useParams();
 
   const [formData, setFormData] = useState({
-    logo: "",
-    name: "",
-    address: "",
-    phone: "",
-    email: "",
-    licenseeName: "",
-    liquorLicNo: "",
-    liquorLicStatus: false,
-    masterLicNo: "",
-    masterLicExp: "",
-    masterLicStatus: false,
-    membershipDate: "",
+    _id: "",
+    date: "",
+    clockOnDate: "",
+    clockOffDate: "",
+    employee: "",
+    roster: "",
+    shiftConfirmed: false,
   });
 
   const [getShiftDetails, { loading, data: { shift } = {} }] = useLazyQuery(

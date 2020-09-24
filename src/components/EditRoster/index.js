@@ -11,18 +11,9 @@ const EditRoster = () => {
   const { rosterId } = useParams();
 
   const [formData, setFormData] = useState({
-    logo: "",
-    name: "",
-    address: "",
-    phone: "",
-    email: "",
-    licenseeName: "",
-    liquorLicNo: "",
-    liquorLicStatus: false,
-    masterLicNo: "",
-    masterLicExp: "",
-    masterLicStatus: false,
-    membershipDate: "",
+    date: "",
+    venue: "",
+    employeeType: "",
   });
 
   const [getRosterDetails, { loading, data: { roster } = {} }] = useLazyQuery(
