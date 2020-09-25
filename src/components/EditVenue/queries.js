@@ -11,20 +11,16 @@ export const DELETE_VENUE_MUTATION = gql`
 export const GET_VENUE_QUERY = gql`
   query getVenue($id: String) {
     venue(id: $id) {
-      _id
-      logo
       name
-      address
-      phone
-      email
-      licenseeName
-      liquorLicNo
       rosters{
         shifts{
           date
           clockOnDate
           clockOnDate
           shiftConfirmed
+          employee{
+            name
+          }
         }
       }
     }

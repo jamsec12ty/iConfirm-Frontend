@@ -18,19 +18,37 @@ const localizer = momentLocalizer(moment)
 //   }
 
 const Selectable = (props) => {
-  const venueId = "5f6b9188e0585be2b0a53a73";
+  const venueId = "5f6d25a0bf7af1dd398e28b3";
   const [modalIsOpen,setIsOpen] = React.useState(false);
+  const [shiftEvents,setShiftEvents] = React.useState([]);
   const [getVenueDetails, { loading, data: { venue } = {} }] = useLazyQuery(
     GET_VENUE_QUERY
   );
-
-  console.log({venue});
 
   useEffect(() => {
     if (venueId) {
       getVenueDetails({ variables: { id: venueId } });
     }
   }, [getVenueDetails, venueId]);
+
+
+  useEffect( () => {
+    if ( venue ) {
+      // console.log('venue', venue.venue);
+      //TODO get all rosters, instead of just 1st.
+      venue.rosters[0].shifts.map((shift) => {
+        return {
+          id:shift._id,
+          title:shift.employee.name,
+          start:new Date(shift.clockOnDate),
+          end: new Date(shift.clockOffDate),
+        };
+      })
+      // setShiftEvents(venue.rosters[0].shifts)
+    }
+
+  },[venue]);
+
 
   const [events, setEvents] = useState(loadedEvents);
 
@@ -71,6 +89,8 @@ const Selectable = (props) => {
         />
       </>
     )
+
+    //TODO add the endDate field to mongoose shift model, add the end date to type Shift in ba schema. Add endDate to the venue queries
 
 } //end of Selectable
 
