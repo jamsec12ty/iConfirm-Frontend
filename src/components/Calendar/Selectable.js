@@ -36,7 +36,7 @@ const Selectable = (props) => {
     if ( venue ) {
       // console.log('venue', venue.venue);
       //TODO get all rosters, instead of just 1st.
-      venue.rosters[0].shifts.map((shift) => {
+        venue.rosters[0].shifts.map((shift) => {
         return {
           id:shift._id,
           title:shift.employee.name,

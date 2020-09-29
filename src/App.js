@@ -93,11 +93,9 @@ function App(props) {
             render={(props) => <Login {...props} onLogin={performLogin} />}
             />
           <Route exact path="/signup" component={EditVenue} />
-            <Route exact path="/user" component={User} />
             <Route exact path="/dropdownemployee" component={DropDownEmployee} />
             <Route exact path="/mycalendar" component={Menu} />
             <Route exact path="/venue/:venueId" component={Venue} />
-
             <Route exact path="/employees" component={Employee} />
 
             <Route
