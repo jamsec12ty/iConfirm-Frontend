@@ -1,4 +1,4 @@
-# iConfirm-Backend
+# iConfirm-Frontend
 Version 1.0.1 - Thu 23 Dec 2020
 
 by Nemo Petrovic & Jamil Samarani
