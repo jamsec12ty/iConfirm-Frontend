@@ -2,6 +2,7 @@
 Version 1.0.1 - Thu 23 Dec 2020
 
 by Nemo Petrovic & Jamil Samarani
+
 Backend Location: https://github.com/JimmyLongbrow/iConfirm-Backend
 
 Frontend Location : https://github.com/jamsec12ty/iconfirm-frontend
